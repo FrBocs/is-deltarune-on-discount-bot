@@ -23,7 +23,7 @@ It runs entirely for free on **GitHub Actions**. No server, no hosting.
 1. Open Telegram, search for **@BotFather**, and send `/newbot`.
 2. Choose a name and a username ending in `bot`.
 3. BotFather gives you a **bot token** (looks like `123456789:AAExxxxxxxxxxx`) and save it.
-4. Send any message to your new bot (e.g. "hi") so Telegram has something to return in the next step.
+4. Send any message to your new bot (ex. "hi") so Telegram has something to return in the next step.
 
 ### 2. Find your chat ID
 

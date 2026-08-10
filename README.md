@@ -3,8 +3,7 @@
 A tiny Telegram bot that checks Steam prices once a day and messages you
 whenever a tracked game (Deltarune by default) goes on sale.
 
-It runs entirely for free on **GitHub Actions** — no server, no hosting,
-no credit card required.
+It runs entirely for free on **GitHub Actions** — no server, no hosting.
 
 ## How it works
 
@@ -107,7 +106,6 @@ Cron format: `minute hour day month weekday`. You can use
 - GitHub Actions free tier includes 2000 minutes/month for private repos —
   a daily run of this script uses only a couple of minutes a month, so you
   won't come close to the limit.
-- No credit card is required to use GitHub Actions within the free tier.
 - This project only supports a single Telegram chat per deployment. If you
   want it to work for multiple users, you'd need to add persistent storage
-  (e.g. a small database or a service like JSONBin) to track subscribers.
+  (e.g. a small database or a service like JSONBin) to track users.

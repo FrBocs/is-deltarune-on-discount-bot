@@ -19,7 +19,7 @@ import requests
 # ============================================================
 
 # Steam appids of the games to track.
-# You can find a game's appid in its store page URL, e.g.:
+# You can find a game's appid in its store page URL, ex.:
 # https://store.steampowered.com/app/1671210/DELTARUNE/  -> appid = 1671210
 APPIDS = {
     1671210: "Deltarune",

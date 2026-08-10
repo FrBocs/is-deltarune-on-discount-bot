@@ -7,8 +7,8 @@ It runs entirely for free on **GitHub Actions**. No server, no hosting.
 
 ## How it works
 
-- A GitHub Actions workflow runs the Python script on a daily schedle.
-- The script checks the current price of the game(s) you configured via the
+- A GitHub Actions workflow runs the Python script on a daily schedule.
+- The script checks th current price of the game(s) you configured via the
   public Steam Store API.
 - If a discount is found, it sends you a Telegram message with the price and
   a link to the store page.

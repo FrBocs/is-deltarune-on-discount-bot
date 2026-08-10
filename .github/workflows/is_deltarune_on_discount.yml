@@ -1,0 +1,41 @@
+name: Is Deltarune On Discount
+
+# ============================================================
+# CONFIGURATION - edit this section to customize the schedule
+# ============================================================
+on:
+  schedule:
+    # Runs daily at 16:00 UTC.
+    # Convert to your local time zone (e.g. 16:00 UTC = 18:00 Italian time
+    # during daylight saving, 17:00 during standard time).
+    # Cron syntax: minute hour day month weekday
+    - cron: "0 16 * * *"
+  workflow_dispatch:
+    # Lets you trigger this workflow manually from the "Actions" tab on GitHub,
+    # useful for testing without waiting for the schedule.
+
+# ============================================================
+# CORE LOGIC - you normally don't need to touch anything below
+# ============================================================
+jobs:
+  check-discounts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run the script
+        env:
+          # These must be set as repository secrets under
+          # Settings > Secrets and variables > Actions
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python is_deltarune_on_discount.py

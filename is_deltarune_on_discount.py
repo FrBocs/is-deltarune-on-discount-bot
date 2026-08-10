@@ -40,6 +40,35 @@ CC = "it"
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
+WELCOME_MESSAGE = (
+    "👋 Hi! This bot checks Steam prices once a day and messages you here "
+    "whenever one of the tracked games goes on sale. No further action needed — "
+    "just wait for a notification when there's a discount."
+)
+
+
+def check_start_command():
+    """Check for any pending /start messages and reply with a short explanation."""
+    if not TELEGRAM_BOT_TOKEN:
+        return
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getUpdates"
+    resp = requests.get(url, timeout=15)
+    resp.raise_for_status()
+    updates = resp.json().get("result", [])
+
+    last_update_id = None
+    for update in updates:
+        last_update_id = update["update_id"]
+        message = update.get("message", {})
+        if message.get("text") == "/start":
+            chat_id = message.get("chat", {}).get("id")
+            if chat_id:
+                send_telegram_message(WELCOME_MESSAGE, chat_id=chat_id)
+
+    if last_update_id is not None:
+        # Acknowledge processed updates so they aren't picked up again next run
+        requests.get(url, params={"offset": last_update_id + 1}, timeout=15)
+
 
 def get_price_info(appid: int):
     """Fetch current price info for a given Steam appid."""
@@ -66,18 +95,21 @@ def get_price_info(appid: int):
     }
 
 
-def send_telegram_message(text: str):
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+def send_telegram_message(text: str, chat_id: str = None):
+    chat_id = chat_id or TELEGRAM_CHAT_ID
+    if not TELEGRAM_BOT_TOKEN or not chat_id:
         raise RuntimeError(
             "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing from environment variables."
         )
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": text, "parse_mode": "HTML"}
+    payload = {"chat_id": chat_id, "text": text, "parse_mode": "HTML"}
     resp = requests.post(url, json=payload, timeout=15)
     resp.raise_for_status()
 
 
 def main():
+    check_start_command()
+
     for appid, name in APPIDS.items():
         try:
             info = get_price_info(appid)

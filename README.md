@@ -3,7 +3,7 @@
 A tiny Telegram bot that checks Steam prices once a day and messages you
 whenever a tracked game (Deltarune by default) goes on sale.
 
-It runs entirely for free on **GitHub Actions** — no server, no hosting.
+It runs entirely for free on **GitHub Actions**. No server, no hosting.
 
 ## How it works
 
@@ -33,7 +33,7 @@ Open this URL in your browser, replacing `<YOUR_TOKEN>` with your bot token:
 https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
 ```
 
-Look for `"chat":{"id": NUMBER` in the response — that number is your **chat ID**.
+Look for `"chat":{"id": NUMBER` in the response, that number is your **chat ID**.
 
 ### 3. Fork or create this repository on GitHub
 

@@ -1,4 +1,4 @@
-# Is Deltarune On Discount 🎮
+# Is Deltarune On Discount
 
 A tiny Telegram bot that checks Steam prices once a day and messages you
 whenever a tracked game (Deltarune by default) goes on sale.

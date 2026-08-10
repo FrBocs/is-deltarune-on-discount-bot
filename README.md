@@ -56,7 +56,7 @@ Go to the **Actions** tab, select the workflow, and click **Run workflow** to
 trigger it manually. Check the run log for errors, and check Telegram for a
 message if the tracked game happens to be on sale.
 
-That's it — from now on it runs automatically on the schedule you set.
+That's it, from now on it runs automatically on the schedule you set.
 
 ## Customizing
 
@@ -108,4 +108,4 @@ Cron format: `minute hour day month weekday`. You can use
   won't come close to the limit.
 - This project only supports a single Telegram chat per deployment. If you
   want it to work for multiple users, you'd need to add persistent storage
-  (e.g. a small database or a service like JSONBin) to track users.
+  (ex. a small database or a service like JSONBin) to track users.

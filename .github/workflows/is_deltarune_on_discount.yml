@@ -6,7 +6,7 @@ name: Is Deltarune On Discount
 on:
   schedule:
     # Runs daily at 16:00 UTC.
-    # Convert to your local time zone (e.g. 16:00 UTC = 18:00 Italian time
+    # Convert to your local time zone (ex. 16:00 UTC = 18:00 Italian time
     # during daylight saving, 17:00 during standard time).
     # Cron syntax: minute hour day month weekday
     - cron: "0 16 * * *"

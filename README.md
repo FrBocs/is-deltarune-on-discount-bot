@@ -35,6 +35,8 @@ https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
 
 Look for `"chat":{"id": NUMBER` in the response, that number is your **chat ID**.
 
+(Or you can just look it up on GroupHelp or any other bot that gives you your account information) 
+
 ### 3. Fork or create this repository on GitHub
 
 Fork this repo, or create a new one and copy in:

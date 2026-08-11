@@ -41,7 +41,7 @@ TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 WELCOME_MESSAGE = (
-    "👋 Hi! This bot checks Steam prices once a day at 16 UTC and messages you here "
+    "👋 Hi! This bot checks Steam prices once a day at 16:00 UTC and messages you here "
     "whenever one of the tracked games goes on sale. No further action needed, "
     "just wait for a notification when there's a discount."
 )
